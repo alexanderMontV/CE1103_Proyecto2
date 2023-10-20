@@ -1,5 +1,10 @@
 package estructurasExpresion;
 
+/**
+ * Classe pila o stack para aplicar orden a los operandos y operadores
+ * Tomada de GitHub.com de Olave,V.(2019), usuario de github @victorolave
+ * @see "https://github.com/victorolave/Infijo_A_Posfijo_Java/"
+ */
 public class Pila
 {
     //Atributos

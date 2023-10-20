@@ -1,10 +1,19 @@
 package estructurasExpresion;
 
+
+/**
+ * Classe para evaluar y convertir la entrada infija en una entrada postfija
+ * Tomada de GitHub.com de Olave,V.(2019), usuario de github @victorolave
+ * @see "https://github.com/victorolave/Infijo_A_Posfijo_Java/"
+ */
 public class Evaluador
 {
 
+    public Evaluador() {
+    }
+
     //Este metodo establece el tipo de caracter
-    public static String Operadore(String exp)
+    public  String Operadore(String exp)
     {
         String datoSalida = "";
 
@@ -19,13 +28,14 @@ public class Evaluador
     }
 
     //Metodo que resive la expresion y la pasa a el metodo de conversion
-    public void Evaluar(String infija)
+    public String Evaluar(String infija)
     {
         String posfija = convertir(infija);
         posfija = posfija.replaceAll("[()]","");
 
-        System.out.println("La expresion postfija es: ");
+        System.out.println("(Alex: estructuras.Evaluador)La expresion postfija es: ");
         System.out.println(" "+posfija+" ");
+        return posfija;
     }
 
     //Metodo de conversion de infija a posfija
