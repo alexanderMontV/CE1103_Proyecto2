@@ -12,7 +12,7 @@ public class Main {
         arbol.raiz.izquierda.derecha.derecha = new Nodo("4");
         arbol.raiz.derecha = new Nodo("/");
         arbol.raiz.derecha.izquierda = new Nodo("5");
-        arbol.raiz.derecha.derecha = new Nodo("2");
+        arbol.raiz.derecha.derecha = new Nodo("0.0");
         double resultado = arbol.evaluar();
         System.out.println("Resultado: " + resultado);
     }
@@ -47,8 +47,9 @@ class ArbolExpresion {
                     if (derecha != 0.0) {
                         return izquierda / derecha;
                     }
-
-                    throw new ArithmeticException("División por cero");
+                    else{
+                        throw new ArithmeticException("División por cero");
+                    }
                 case "^":
                     return Math.pow(izquierda, derecha);
                 default:

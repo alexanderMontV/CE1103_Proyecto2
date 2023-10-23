@@ -44,7 +44,7 @@ public class Evaluador
         String posfija = "";
         Pila pila = new Pila(100);
 
-        //Evalua el recorrido del  string caracte por caracter
+        //Evalua el recorrido del string caracte por caracter
         for (int i = 0; i < infija.length() ; i++)
         {
             char letra = infija.charAt(i);
