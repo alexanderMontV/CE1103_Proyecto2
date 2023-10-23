@@ -28,10 +28,10 @@ public class Evaluador
     }
 
     //Metodo que resive la expresion y la pasa a el metodo de conversion
-    public String Evaluar(String infija)
+    public Queue Evaluar(String infija)
     {
-        String posfija = convertir(infija);
-        posfija = posfija.replaceAll("[()]","");
+        Queue posfija = convertir(infija);
+        //posfija = posfija.replaceAll("[()]","");
 
         System.out.println("(Alex: estructuras.Evaluador)La expresion postfija es: ");
         System.out.println(" "+posfija+" ");
@@ -39,9 +39,10 @@ public class Evaluador
     }
 
     //Metodo de conversion de infija a posfija
-    public static String convertir(String infija)
+    public static Queue convertir(String infija)
     {
-        String posfija = "";
+        Queue posfija = new Queue();
+        String temp="";
         Pila pila = new Pila(100);
 
         //Evalua el recorrido del string caracte por caracter
@@ -51,6 +52,8 @@ public class Evaluador
             // Si es un operador entonces lo apila
             if(esOperador (infija.charAt(i)))
             {
+                posfija.enqueue(temp);
+                temp="";
                 if(pila.PilaVacia())
                 {
                     pila.Apilar(letra);
@@ -67,20 +70,25 @@ public class Evaluador
                     }
                     else
                     {
-                        posfija += pila.Desapilar();
+                        if (pila.Desapilar() != "(" || pila.Desapilar()!=")"){
+                            posfija.enqueue(pila.Desapilar());}
+                        else{
+                            pila.Desapilar();
+                        }
                         pila.Apilar(letra);
                     }
                 }
             }
             else
             {
-                posfija += letra;
+                temp += letra;
             }
         }
         //Vacia la pila para que no queden operadores
         while (!pila.PilaVacia())
         {
-            posfija += pila.Desapilar();
+            posfija.enqueue(pila.Desapilar());
+
         }
         return posfija;
     }

@@ -6,8 +6,8 @@ public class Arbol {
     public Arbol(){
 
     }
-    public boolean isOperator(char c) {
-        return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^');
+    public boolean isOperator(String c) {
+        return (c == "+" || c == "-" || c == "*" || c == "/" || c == "^");
     }
     public void inorder(Nodo root)
     {
@@ -29,20 +29,22 @@ public class Arbol {
             System.out.print(")");
         }
     }
-    public Nodo construct(String postfix)
+    public Nodo construct(Queue postfix)
     {
         // caso base
-        if (postfix == null || postfix.length() == 0) {
+        if (postfix == null) {
             return null;
         }
 
         // crea una stack vacía para almacenar punteros de árbol
         Stack<Nodo> s = new Stack<>();
 
+        String c = "";
         // recorrer la expresión de sufijo
-        for (char c: postfix.toCharArray())
+        while (postfix.getFirst() !=null)
         {
             // si el token actual es un operador
+            c += postfix.dequeue();
             if (isOperator(c))
             {
                 // extrae dos nodos `x` e `y` de la stack
@@ -61,6 +63,7 @@ public class Arbol {
             else {
                 s.add(new Nodo(c));
             }
+            c="";
         }
 
         // un puntero a la raíz del árbol de expresión permanece en la stack
