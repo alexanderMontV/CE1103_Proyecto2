@@ -1,4 +1,5 @@
 package estructurasExpresion;
+import java.util.Objects;
 import java.util.Stack;
 
 public class Arbol {
@@ -7,7 +8,7 @@ public class Arbol {
 
     }
     public boolean isOperator(String c) {
-        return (c == "+" || c == "-" || c == "*" || c == "/" || c == "^");
+        return Objects.equals(c, "+") || Objects.equals(c, "-") || Objects.equals(c, "*") || Objects.equals(c, "/") || Objects.equals(c, "^");
     }
     public void inorder(Nodo root)
     {
@@ -16,16 +17,16 @@ public class Arbol {
         }
 
         // si el token actual es un operador, imprime un paréntesis abierto
-        if (isOperator(root.data)) {
+        if (isOperator(root.valor)) {
             System.out.print("(");
         }
 
         inorder(root.left);
-        System.out.print(root.data);
+        System.out.print(root.valor);
         inorder(root.right);
 
         // si el token actual es un operador, imprime cerrar paréntesis
-        if (isOperator(root.data)) {
+        if (isOperator(root.valor)) {
             System.out.print(")");
         }
     }
@@ -41,7 +42,7 @@ public class Arbol {
 
         String c = "";
         // recorrer la expresión de sufijo
-        while (postfix.getFirst() !=null)
+        while (!postfix.getList().isEmpty())
         {
             // si el token actual es un operador
             c += postfix.dequeue();

@@ -1,19 +1,16 @@
+import arbolInfijo.convertInfxPostfx;
+import estructurasExpresion.Arbol;
+import estructurasExpresion.Nodo;
+
 public class Main {
     public Main() {
     }
 
     public static void main(String[] args) {
-        ArbolExpresion arbol = new ArbolExpresion();
-        arbol.raiz = new Nodo("-");
-        arbol.raiz.izquierda = new Nodo("+");
-        arbol.raiz.izquierda.izquierda = new Nodo("2");
-        arbol.raiz.izquierda.derecha = new Nodo("*");
-        arbol.raiz.izquierda.derecha.izquierda = new Nodo("3");
-        arbol.raiz.izquierda.derecha.derecha = new Nodo("4");
-        arbol.raiz.derecha = new Nodo("/");
-        arbol.raiz.derecha.izquierda = new Nodo("5");
-        arbol.raiz.derecha.derecha = new Nodo("0.0");
-        double resultado = arbol.evaluar();
+        ArbolExpresion ex = new ArbolExpresion();
+        Arbol arbol = new Arbol();
+        convertInfxPostfx cnv = new convertInfxPostfx();
+        double resultado = ex.evaluarRecursivo(arbol.construct(cnv.convertirPQ("((16+57)*(34*(8+29)))")));
         System.out.println("Resultado: " + resultado);
     }
 }
@@ -28,15 +25,15 @@ class ArbolExpresion {
         return this.evaluarRecursivo(this.raiz);
     }
 
-    private double evaluarRecursivo(Nodo nodo) {
-        if (nodo == null) {
+    public double evaluarRecursivo(Nodo nodoDelete) {
+        if (nodoDelete == null) {
             return 0.0;
-        } else if (this.esNumero(nodo.valor)) {
-            return Double.parseDouble(nodo.valor);
+        } else if (this.esNumero(nodoDelete.valor)) {
+            return Double.parseDouble(nodoDelete.valor);
         } else {
-            double izquierda = this.evaluarRecursivo(nodo.izquierda);
-            double derecha = this.evaluarRecursivo(nodo.derecha);
-            switch (nodo.valor) {
+            double izquierda = this.evaluarRecursivo(nodoDelete.left);
+            double derecha = this.evaluarRecursivo(nodoDelete.right);
+            switch (nodoDelete.valor) {
                 case "+":
                     return izquierda + derecha;
                 case "-":
@@ -53,7 +50,7 @@ class ArbolExpresion {
                 case "^":
                     return Math.pow(izquierda, derecha);
                 default:
-                    throw new IllegalArgumentException("Operador inválido: " + nodo.valor);
+                    throw new IllegalArgumentException("Operador inválido: " + nodoDelete.valor);
             }
         }
     }
@@ -68,13 +65,3 @@ class ArbolExpresion {
     }
 }
 
-class Nodo {
-    String valor;
-    Nodo izquierda;
-    Nodo derecha;
-
-    public Nodo(String valor) {
-        this.valor = valor;
-        this.izquierda = this.derecha = null;
-    }
-}

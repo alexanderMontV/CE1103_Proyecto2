@@ -1,19 +1,20 @@
 package estructurasExpresion;
 
-class Nodo
+public class Nodo
 {
-    String data;
-    Nodo left, right;
+    public String valor;
+    public Nodo left;
+    public Nodo right;
 
-    Nodo(String data)
+    public Nodo(String data)
     {
-        this.data = data;
+        this.valor = data;
         this.left = this.right = null;
     }
 
-    Nodo (String data, Nodo left, Nodo right)
+    public Nodo (String data, Nodo left, Nodo right)
     {
-        this.data = data;
+        this.valor = data;
         this.left = left;
         this.right = right;
     }
