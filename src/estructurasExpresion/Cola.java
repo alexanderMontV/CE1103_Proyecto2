@@ -2,12 +2,11 @@ package estructurasExpresion;
 
 import java.util.LinkedList;
 
-public class Queue {
+public class Cola {
 
     private LinkedList<Object> list;
-    private Object primero;
 
-    public Queue() {
+    public Cola() {
         this.list = new LinkedList<>();
     }
 
@@ -16,7 +15,6 @@ public class Queue {
 
         }
         this.list.addLast(element);}
-    public Object dequeue(Object element) { return this.list.removeFirst(); }
 
     public Object dequeue(){
         return this.list.removeFirst();
@@ -24,7 +22,12 @@ public class Queue {
     public Object getFirst(){
         return this.list.getFirst();
     }
-
+    public boolean isempty(){
+        return this.list.isEmpty();
+    }
+    public int size(){
+        return this.list.size();
+    }
 
     public LinkedList<Object> getList() {
         return list;

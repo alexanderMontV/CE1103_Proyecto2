@@ -10,27 +10,7 @@ public class Arbol {
     public boolean isOperator(String c) {
         return Objects.equals(c, "+") || Objects.equals(c, "-") || Objects.equals(c, "*") || Objects.equals(c, "/") || Objects.equals(c, "^");
     }
-    public void inorder(Nodo root)
-    {
-        if (root == null) {
-            return;
-        }
-
-        // si el token actual es un operador, imprime un paréntesis abierto
-        if (isOperator(root.valor)) {
-            System.out.print("(");
-        }
-
-        inorder(root.left);
-        System.out.print(root.valor);
-        inorder(root.right);
-
-        // si el token actual es un operador, imprime cerrar paréntesis
-        if (isOperator(root.valor)) {
-            System.out.print(")");
-        }
-    }
-    public Nodo construct(Queue postfix)
+    public Nodo construct(Cola postfix)
     {
         // caso base
         if (postfix == null) {

@@ -1,91 +1,33 @@
 package estructurasExpresion;
 
-/**
- * Classe pila o stack para aplicar orden a los operandos y operadores
- * Tomada de GitHub.com de Olave,V.(2019), usuario de github @victorolave
- * @see "https://github.com/victorolave/Infijo_A_Posfijo_Java/"
- */
-public class Pila
-{
-    //Atributos
+import java.util.LinkedList;
 
-    private Object VectorPila[];
-    private int tope;
-    private int max;
+public class Pila {
 
-    //Constructor Parametrizado
-    public Pila(int max)
-    {
-        this.max = max;
-        this.tope = 0;
-        this.VectorPila = new Object [max];
+    private final LinkedList<Object> list;
+
+    public Pila() {
+        this.list = new LinkedList<>();
     }
 
-    //Revision si la pila esta vacia
-    public boolean PilaVacia()
-    {
-        if(tope == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    public void push(Object element) {
+        this.list.addFirst(element);}
+
+    public Object pop(){
+        return this.list.removeLast();
+    }
+    public Object peek(){
+        return this.list.getLast();
+    }
+    public boolean isempty(){
+        return this.list.isEmpty();
+    }
+    public int size(){
+        return this.list.size();
     }
 
-    //Revision si la pila esta llena
-    public boolean PilaLlena()
-    {
-        if(this.tope == this.max)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    public LinkedList<Object> getList() {
+        return list;
     }
 
-    //Metodo para vaciar la pila
-    public void VaciarPila()
-    {
-        this.tope = 0;
-    }
-
-    //Metodo de Apilar
-    public boolean Apilar(Object dato)
-    {
-        if (this.PilaLlena())
-        {
-            System.out.println("---- PILA LLENA ----");
-        }
-        else
-        {
-            VectorPila[tope] = dato;
-            tope++;
-        }
-        return true;
-    }
-
-    //Metodo de Desapilar
-    public Object Desapilar()
-    {
-        Object dato = null;
-
-        if (this.PilaVacia())
-        {
-            System.out.println("---- PILA VACIA ----");
-        }
-        else
-        {
-            dato = VectorPila[tope--];
-        }
-        return VectorPila [tope];
-    }
-
-    public Object elementoTope()
-    {
-        return VectorPila[tope-1];
-    }
 }
