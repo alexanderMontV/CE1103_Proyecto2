@@ -10,6 +10,7 @@ public class convertInfxPostfx {
     public Queue convertirPQ (String infijo){
         Queue postf = new Queue();
         String temp = "";
+        String potencia="**";
         Stack pila = new Stack();
         for (int i=0;i<infijo.length();i++){
             Character C = infijo.charAt(i);
@@ -35,6 +36,10 @@ public class convertInfxPostfx {
                     C=null;
                 }
                 else{
+                    if (C=='*' && infijo.charAt(i+1)=='*'){
+                        i++;
+                        C='^';
+                    }
                     while(!pila.empty() && isOperator((Character) pila.peek()) && (prioridadEnExpresion((Character) pila.peek()) >= prioridadEnExpresion(C))){
                         postf.enqueue(pila.pop());
                     }

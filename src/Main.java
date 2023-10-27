@@ -10,7 +10,7 @@ public class Main {
         ArbolExpresion ex = new ArbolExpresion();
         Arbol arbol = new Arbol();
         convertInfxPostfx cnv = new convertInfxPostfx();
-        double resultado = ex.evaluarRecursivo(arbol.construct(cnv.convertirPQ("16+57*34*8+29")));
+        double resultado = ex.evaluarRecursivo(arbol.construct(cnv.convertirPQ("8**3")));
         System.out.println("Resultado: " + resultado);
     }
 }
