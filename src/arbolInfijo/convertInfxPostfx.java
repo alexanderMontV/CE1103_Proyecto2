@@ -17,7 +17,7 @@ public class convertInfxPostfx {
                 temp+=C;
             }
             else{
-                if (temp!=""){
+                if (!temp.equals("")){
                 postf.enqueue(temp);
                 temp="";}
                 if (C=='('){
@@ -42,6 +42,7 @@ public class convertInfxPostfx {
                 }
             }
         }
+        if (!temp.equals("")){postf.enqueue(temp);}
         while (!pila.empty()){
             postf.enqueue(pila.pop());
         }
@@ -51,20 +52,10 @@ public class convertInfxPostfx {
     }
 
     public boolean isOperator(Character c){
-        if (c=='+' || c=='-' || c=='*' || c=='/' || c=='^'){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '%';
     }
     public boolean isOperando(Character c){
-        if (c=='+' || c=='-' || c=='*' || c=='/' || c=='^' || c=='(' || c==')'){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return c != '+' && c != '-' && c != '*' && c != '/' && c != '%' && c != '^' && c != '(' && c != ')';
     }
     private int prioridadEnExpresion (char operador)
     {

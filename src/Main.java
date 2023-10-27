@@ -10,7 +10,7 @@ public class Main {
         ArbolExpresion ex = new ArbolExpresion();
         Arbol arbol = new Arbol();
         convertInfxPostfx cnv = new convertInfxPostfx();
-        double resultado = ex.evaluarRecursivo(arbol.construct(cnv.convertirPQ("((16+57)*(34*(8+29)))")));
+        double resultado = ex.evaluarRecursivo(arbol.construct(cnv.convertirPQ("16+57*34*8+29")));
         System.out.println("Resultado: " + resultado);
     }
 }
@@ -40,6 +40,8 @@ class ArbolExpresion {
                     return izquierda - derecha;
                 case "*":
                     return izquierda * derecha;
+                case "%":
+                    return (izquierda * derecha)/100;
                 case "/":
                     if (derecha != 0.0) {
                         return izquierda / derecha;
