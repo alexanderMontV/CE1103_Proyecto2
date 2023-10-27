@@ -4,16 +4,13 @@ import java.util.LinkedList;
 
 public class Cola {
 
-    private LinkedList<Object> list;
+    private final LinkedList<Object> list;
 
     public Cola() {
         this.list = new LinkedList<>();
     }
 
     public void enqueue(Object element) {
-        if (this.list.isEmpty()){
-
-        }
         this.list.addLast(element);}
 
     public Object dequeue(){
@@ -22,13 +19,12 @@ public class Cola {
     public Object getFirst(){
         return this.list.getFirst();
     }
-    public boolean isempty(){
+    public boolean empty(){
         return this.list.isEmpty();
     }
     public int size(){
         return this.list.size();
     }
-
     public LinkedList<Object> getList() {
         return list;
     }

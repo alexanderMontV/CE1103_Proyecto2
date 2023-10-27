@@ -19,13 +19,15 @@ public class Pila {
     public Object peek(){
         return this.list.getLast();
     }
-    public boolean isempty(){
+    public boolean empty(){
         return this.list.isEmpty();
+    }
+    public void clear(){
+        this.list.clear();
     }
     public int size(){
         return this.list.size();
     }
-
     public LinkedList<Object> getList() {
         return list;
     }
