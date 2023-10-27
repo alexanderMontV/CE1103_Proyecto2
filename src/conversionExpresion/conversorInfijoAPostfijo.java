@@ -1,58 +1,55 @@
 package conversionExpresion;
 
 import estructurasExpresion.Cola;
+import estructurasExpresion.Pila;
 
-import java.util.Stack;
-
-public class convertInfxPostfx {
-    public convertInfxPostfx(){}
+public class conversorInfijoAPostfijo {
+    public conversorInfijoAPostfijo(){}
 
     public Cola convertirPQ (String infijo){
-        Cola postf = new Cola();
-        String temp = "";
-        String potencia="**";
-        Stack pila = new Stack();
+        Cola colaSalidaPostfija = new Cola();
+        StringBuilder temp = new StringBuilder();
+        Pila pila = new Pila();
         for (int i=0;i<infijo.length();i++){
             Character C = infijo.charAt(i);
             if (isOperando(C)){
-                temp+=C;
+                temp.append(C);
             }
             else{
-                if (!temp.equals("")){
-                postf.enqueue(temp);
-                temp="";}
+                if (!temp.toString().equals("")){
+                colaSalidaPostfija.enqueue(temp.toString());
+                temp = new StringBuilder();}
                 if (C=='('){
                     pila.push(C);
                 }else if (C==')'){
-                    while(!pila.empty() && (Character) pila.peek() != '('){
-                        postf.enqueue(pila.pop());
+                    while(pila.empty() && (Character) pila.peek() != '('){
+                        colaSalidaPostfija.enqueue(pila.pop());
                     }
                     if ((Character) pila.peek() == '('){
                         pila.pop();
                     }
                     else {
-                        System.out.println("ERORR DE PARENTESIS");
+                        System.out.println("ERROR DE PARENT");
                     }
-                    C=null;
                 }
                 else{
                     if (C=='*' && infijo.charAt(i+1)=='*'){
                         i++;
                         C='^';
                     }
-                    while(!pila.empty() && isOperadorAlgebra((Character) pila.peek()) && (prioridadEnExpresion((Character) pila.peek()) >= prioridadEnExpresion(C))){
-                        postf.enqueue(pila.pop());
+                    while(pila.empty() && isOperadorAlgebra((Character) pila.peek()) && (prioridadEnExpression((Character) pila.peek()) >= prioridadEnExpression(C))){
+                        colaSalidaPostfija.enqueue(pila.pop());
                     }
                     pila.push(C);
                 }
             }
         }
-        if (!temp.equals("")){postf.enqueue(temp);}
-        while (!pila.empty()){
-            postf.enqueue(pila.pop());
+        if (!temp.toString().equals("")){colaSalidaPostfija.enqueue(temp.toString());}
+        while (pila.empty()){
+            colaSalidaPostfija.enqueue(pila.pop());
         }
         pila.clear();
-        return postf;
+        return colaSalidaPostfija;
 
     }
     public boolean isOperadorAlgebra(Character c){
@@ -61,7 +58,7 @@ public class convertInfxPostfx {
     public boolean isOperando(Character c){
         return c != '+' && c != '-' && c != '*' && c != '/' && c != '%' && c != '^' && c != '(' && c != ')';
     }
-    private int prioridadEnExpresion (char operador)
+    private int prioridadEnExpression(char operador)
     {
         if (operador == '^')
         {
