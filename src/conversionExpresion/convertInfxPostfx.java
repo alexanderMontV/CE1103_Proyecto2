@@ -1,14 +1,14 @@
-package arbolInfijo;
+package conversionExpresion;
 
-import estructurasExpresion.Queue;
+import estructurasExpresion.Cola;
 
 import java.util.Stack;
 
 public class convertInfxPostfx {
     public convertInfxPostfx(){}
 
-    public Queue convertirPQ (String infijo){
-        Queue postf = new Queue();
+    public Cola convertirPQ (String infijo){
+        Cola postf = new Cola();
         String temp = "";
         String potencia="**";
         Stack pila = new Stack();
@@ -40,7 +40,7 @@ public class convertInfxPostfx {
                         i++;
                         C='^';
                     }
-                    while(!pila.empty() && isOperator((Character) pila.peek()) && (prioridadEnExpresion((Character) pila.peek()) >= prioridadEnExpresion(C))){
+                    while(!pila.empty() && isOperadorAlgebra((Character) pila.peek()) && (prioridadEnExpresion((Character) pila.peek()) >= prioridadEnExpresion(C))){
                         postf.enqueue(pila.pop());
                     }
                     pila.push(C);
@@ -55,8 +55,7 @@ public class convertInfxPostfx {
         return postf;
 
     }
-
-    public boolean isOperator(Character c){
+    public boolean isOperadorAlgebra(Character c){
         return c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '%';
     }
     public boolean isOperando(Character c){
