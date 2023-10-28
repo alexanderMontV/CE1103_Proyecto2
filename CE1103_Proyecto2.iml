@@ -23,22 +23,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/tess4j-3.4.8.jar!/" />
-          <root url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <NATIVE>
-          <root url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/lib/win32-x86-64" />
-        </NATIVE>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/tessdata" />
-        </SOURCES>
-        <jarDirectory url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/lib" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="Tess4">
         <CLASSES />
         <JAVADOC />
@@ -55,6 +39,22 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/tess4j-3.4.8.jar!/" />
+          <root url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/dist" />
+          <root url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/src" />
+          <root url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/tessdata" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/dist" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../Tess4J-3.4.8-src/Tess4J/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

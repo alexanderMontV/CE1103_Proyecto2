@@ -5,8 +5,11 @@ import com.google.gson.JsonParser;
 import conversionExpresion.conversorInfijoAPostfijo;
 import estructurasExpresion.Arbol;
 import estructurasExpresion.ArbolExpresion;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -42,6 +45,7 @@ public class marcoServidor implements Runnable {
     public void run() {
 
         int portS = 0;
+
         try {
             ServerSocket server = new ServerSocket(9999); //Socket de entrada que recibe los mensajes
 
@@ -50,6 +54,7 @@ public class marcoServidor implements Runnable {
 
             ArrayList<String> listaIp = new ArrayList<String>();
             ArrayList<Integer> listaIpnPort = new ArrayList<Integer>();
+            Tesseract tesseract = new Tesseract();
 
             //paqueteDato paqueteR;
 
@@ -70,7 +75,12 @@ public class marcoServidor implements Runnable {
                     if (metodo.equals("manual")) {
                         resultado = aex.evaluarExpresion(arbol.construct(cnv.convertirPQ(data, tipo)));
                     } else {
-                        resultado = "0.1";
+                        tesseract.setDatapath("./tessdata/");
+                        // the path of your tess data folder
+                        // inside the extracted file
+                        String text= tesseract.doOCR(new File("./assets/scan"+portS+".jpg"));
+                        System.out.println(text);
+                        resultado = aex.evaluarExpresion(arbol.construct(cnv.convertirPQ(text, tipo)));
                     }
                     respuesta = resultado;
                 } else {
@@ -95,6 +105,8 @@ public class marcoServidor implements Runnable {
             throw new RuntimeException(e);
         } catch (RuntimeException e) {
             enviarError(e, portS);
+            throw new RuntimeException(e);
+        } catch (TesseractException e) {
             throw new RuntimeException(e);
         }
 
