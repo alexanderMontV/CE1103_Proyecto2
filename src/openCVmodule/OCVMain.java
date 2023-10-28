@@ -18,7 +18,9 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ * Classe de estructura para ver usar la camara con OpenCV
+ */
 public class OCVMain extends JFrame{
 
     private int port;
@@ -94,6 +96,11 @@ public class OCVMain extends JFrame{
         }
     }
 
+    
+    /** 
+     * @param port
+     * @param ruta
+     */
     private void sendPicture(int port, String ruta){
         try {
             Socket mysocket = new Socket("localhost",9999); //Abre el socket para enviar los datos al servidor

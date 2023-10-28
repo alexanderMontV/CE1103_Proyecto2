@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"estructurasExpresion"},{"l":"openCVmodule"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"conversionExpresion"},{"l":"estructurasExpresion"},{"l":"interfaz"},{"l":"openCVmodule"},{"l":"sockets"}];updateSearchResults();

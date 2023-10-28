@@ -1,5 +1,7 @@
 package estructurasExpresion;
-
+/**
+ * Classe de estructura Nodo
+ */
 public class Nodo
 {
     public String valor;

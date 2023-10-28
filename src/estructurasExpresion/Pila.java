@@ -1,6 +1,9 @@
 package estructurasExpresion;
 
 import java.util.LinkedList;
+/**
+ * Classe de estructura Pila
+ */
 
 public class Pila {
 
@@ -9,6 +12,7 @@ public class Pila {
     public Pila() {
         this.list = new LinkedList<>();
     }
+
 
     public void push(Object element) {
         this.list.addLast(element);}

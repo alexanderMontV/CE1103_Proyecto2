@@ -85,12 +85,10 @@ public class marcoServidor implements Runnable {
                     respuesta = "Ingrese una operacion";
                 }
                 String archivoCSV = "./dataBase/"+portS+".csv";
-                String[] datos = {String.valueOf(data), String.valueOf(respuesta), String.valueOf(LocalDateTime.now())};
-                try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoCSV))) {
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoCSV,true))) {
+                    String datos = data+","+respuesta+","+LocalDateTime.now();
                     // Escribir datos en el archivo CSV, separados por comas
-                    for (String dato : datos) {
-                        bw.write(dato + ",");
-                    }
+                    bw.write(datos);
                     bw.newLine(); // Nueva línea para la siguiente fila
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -123,6 +121,11 @@ public class marcoServidor implements Runnable {
 
 
     }
+    
+    /** 
+     * @param e
+     * @param port
+     */
     private void enviarError(Exception e, int port){
         try {
             Socket socketDestino = new Socket("localhost", port); //Socket salida

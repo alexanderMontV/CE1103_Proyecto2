@@ -2,14 +2,30 @@ package estructurasExpresion;
 import java.util.Objects;
 import java.util.Stack;
 
+/**
+ * Clase de estructura de la clase arbol
+ * */
 public class Arbol {
+
 
     public Arbol(){
 
     }
+    
+    /**
+     * Meotodo para saber si es un operador
+     * @param c como caracter de la cadena
+     * @return boolean
+     */
     public boolean isOperator(String c) {
         return Objects.equals(c, "+") || Objects.equals(c, "-") || Objects.equals(c, "*") || Objects.equals(c, "/") || Objects.equals(c, "#") ||Objects.equals(c, "|" ) ||Objects.equals(c, "&" ) ||Objects.equals(c, "^"  ) ||Objects.equals(c, "~" );
     }
+
+    /**
+     * Meotodo para construitr el arbol
+     * @param postfix como la cola postfija
+     * @return Nodo que es la raiz del arbol
+     */
     public Nodo construct(Cola postfix)
     {
         // caso base

@@ -5,7 +5,14 @@ import interfaz.interfazCliente;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Classe principal de ejecucion cliente
+ */
 public class clienteCalculadora extends JFrame {
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         interfazCliente ventana = new interfazCliente();
         ventana.setTitle("Calculadora Proyecto 2");

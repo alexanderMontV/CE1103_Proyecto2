@@ -14,6 +14,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import javax.swing.*;
 
+/**
+ * Classe de interfaz cliente implementa Java Swing
+ *
+ */
+
 public class interfazCliente extends JFrame implements Runnable{
     private JComboBox selectorTipo;
     private JLabel jcomp2;
@@ -25,6 +30,10 @@ public class interfazCliente extends JFrame implements Runnable{
     private JButton btnCamara;
     private JButton historial;
 
+    
+    /** 
+     * @return Integer
+     */
     public Integer getMyPort() {
         return myPort;
     }

@@ -6,6 +6,12 @@ public class ArbolExpresion {
     public ArbolExpresion() {
     }
 
+    
+    /**
+     * Evalua la expresion para ver que no sea null
+     * @param arbol que es el nodo raiz del arbol
+     * @return String
+     */
     public String evaluarExpresion(Nodo arbol) {
         if (arbol!=null){
         return String.valueOf(this.evaluarRecursivo(arbol));}
@@ -13,7 +19,10 @@ public class ArbolExpresion {
             return "Expresion invalida";
         }
     }
-
+    /**
+     * @param nodoDelete que es el nodo raiz del arbol
+     * @return double valor del resultado
+     */
     public double evaluarRecursivo(Nodo nodoDelete) {
         if (nodoDelete == null) {
             return 0.0;
@@ -53,7 +62,11 @@ public class ArbolExpresion {
             }
         }
     }
-
+    /**
+     * Comprobar que es un numero
+     * @param valor
+     * @return String
+     */
     private boolean esNumero(String valor) {
         try {
             Double.parseDouble(valor);

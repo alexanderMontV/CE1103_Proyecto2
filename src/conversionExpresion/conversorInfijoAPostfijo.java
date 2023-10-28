@@ -3,9 +3,21 @@ package conversionExpresion;
 import estructurasExpresion.Cola;
 import estructurasExpresion.Pila;
 
+/**
+ * Clase para convertir expresion infija a una expresion postfija
+ *
+ * */
 public class conversorInfijoAPostfijo {
     public conversorInfijoAPostfijo(){}
 
+    
+    /**
+     * Metodo para convertir expresion infija a un postfija
+     * @param infijo
+     * @param tipo
+     * @return Cola que sirve para la creación del arbol
+     * @throws RuntimeException
+     */
     public Cola convertirPQ (String infijo, String tipo) throws RuntimeException {
         Cola postf = new Cola();
         StringBuilder temp = new StringBuilder();
@@ -68,18 +80,38 @@ public class conversorInfijoAPostfijo {
 
     }
 
+    /**
+     * Metodo para saber si es un operador
+     * @param c como caracter de cadena
+     * */
     public boolean isOperador(Character c){
         return c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '&' || c == '!' || c == '~' || c == '^' || c== '#';
     }
+    /**
+     * Metodo para saber si es un operador de algebra
+     * @param c como caracter de cadena
+     * */
     public boolean isOperadorAlgebra(Character c){
         return c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c=='#';
     }
+    /**
+     * Metodo para saber si es un operador Logico
+     * @param c como caracter de cadena
+     * */
     public boolean isOperadorLogic(Character c){
         return c == '&' || c == '|' || c == '~' || c == '^' || c=='"';
     }
+    /**
+     * Metodo para saber si es un parantesis
+     * @param c como caracter de cadena
+     * */
     public boolean isPatentesis(Character c){
         return c == '(' || c == ')';
     }
+    /**
+     * Metodo para saber la prioridad del operador
+     * @param operador como caracter de cadena
+     * */
     private int prioridadEnExpression(char operador)
     {
         if (operador == '#' || operador =='~')

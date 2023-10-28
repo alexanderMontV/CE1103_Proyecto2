@@ -3,7 +3,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.*;
 import java.util.Vector;
-
+/**
+ * Classe de estructura para ver el historial
+ */
 public class PantallaHistorial extends  JFrame{
 
     public PantallaHistorial(int port){

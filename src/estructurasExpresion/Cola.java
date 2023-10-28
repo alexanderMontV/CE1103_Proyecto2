@@ -1,10 +1,14 @@
 package estructurasExpresion;
 
 import java.util.LinkedList;
+/**
+ * Classe de estructura cola
+ */
 
 public class Cola {
 
-    private final LinkedList<Object> list;
+    private final LinkedList<Object>
+            list;
 
     public Cola() {
         this.list = new LinkedList<>();
