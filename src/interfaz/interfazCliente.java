@@ -71,7 +71,7 @@ public class interfazCliente extends JFrame implements Runnable{
         historial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               PantallaHistorial phistorial = new PantallaHistorial();
+               PantallaHistorial phistorial = new PantallaHistorial(myPort);
             }
         });
 

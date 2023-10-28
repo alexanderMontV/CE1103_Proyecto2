@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class PantallaHistorial extends  JFrame{
 
-    public PantallaHistorial(){
+    public PantallaHistorial(int port){
         JFrame frame = new JFrame("Java Swing Table");
         frame.setSize(900, 900);
         JPanel panel = new JPanel();
@@ -16,7 +16,7 @@ public class PantallaHistorial extends  JFrame{
         panel.add(sp);
         frame.add(panel);
 
-        String archivoCSV = "./datos.csv";
+        String archivoCSV = "./dataBase/"+port+".csv";
         String linea;
         DefaultTableModel csv_data = new DefaultTableModel();
 
