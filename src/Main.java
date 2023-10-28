@@ -1,16 +1,20 @@
-import arbolInfijo.convertInfxPostfx;
+import archivosDespreciables.conversorRestore;
+import conversionExpresion.conversorInfijoAPostfijo;
 import estructurasExpresion.Arbol;
 import estructurasExpresion.Nodo;
+
+import java.util.function.BinaryOperator;
 
 public class Main {
     public Main() {
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ArbolExpresion ex = new ArbolExpresion();
         Arbol arbol = new Arbol();
-        convertInfxPostfx cnv = new convertInfxPostfx();
-        double resultado = ex.evaluarRecursivo(arbol.construct(cnv.convertirPQ("8**3")));
+        conversorInfijoAPostfijo cnv = new conversorInfijoAPostfijo();
+        conversorRestore cm = new conversorRestore();
+        double resultado = ex.evaluarRecursivo(arbol.construct(cnv.convertirPQ("~2","Logica")));
         System.out.println("Resultado: " + resultado);
     }
 }
@@ -49,8 +53,16 @@ class ArbolExpresion {
                     else{
                         throw new ArithmeticException("División por cero");
                     }
-                case "^":
+                case "#":
                     return Math.pow(izquierda, derecha);
+                case "|":
+                        return ((int) izquierda | (int) derecha);
+                case "&":
+                    return ((int) izquierda & (int) derecha);
+                case "^":
+                    return ((int) izquierda ^ (int) derecha);
+                case "~":
+                    return ~ ((byte) derecha);
                 default:
                     throw new IllegalArgumentException("Operador inválido: " + nodoDelete.valor);
             }

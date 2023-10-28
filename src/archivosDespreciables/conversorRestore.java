@@ -1,12 +1,12 @@
-package conversionExpresion;
+package archivosDespreciables;
 
 import estructurasExpresion.Cola;
 import estructurasExpresion.Pila;
 
-public class conversorInfijoAPostfijo {
-    public conversorInfijoAPostfijo(){}
+public class conversorRestore {
+    public conversorRestore(){}
 
-    public Cola convertirPQ (String infijo, String tipo) throws RuntimeException {
+    public Cola convertirPQ (String infijo, String tipo) throws Exception {
         Cola postf = new Cola();
         StringBuilder temp = new StringBuilder();
         Pila pila = new Pila();
@@ -36,7 +36,7 @@ public class conversorInfijoAPostfijo {
                 else{
                     if (tipo.equals("Algebra")){
                         if (isOperadorLogic(C)){
-                            return null;
+                            throw new Exception("Simbolo Logico en operacion Algebraica");
                         }
                         if (C=='*' && infijo.charAt(i+1)=='*'){
                             i++;
@@ -45,7 +45,7 @@ public class conversorInfijoAPostfijo {
                     }
                     else {
                         if (isOperadorAlgebra(C)){
-                            return null;
+                            throw new Exception("Simbolo Algebaraico en operacion Logica");
                         }
                         if (C=='"' && infijo.charAt(i+1)=='*'){
                             i++;
@@ -72,7 +72,7 @@ public class conversorInfijoAPostfijo {
         return c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '&' || c == '!' || c == '~' || c == '^' || c== '#';
     }
     public boolean isOperadorAlgebra(Character c){
-        return c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c=='#';
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '%';
     }
     public boolean isOperadorLogic(Character c){
         return c == '&' || c == '|' || c == '~' || c == '^' || c=='"';

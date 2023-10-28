@@ -1,11 +1,12 @@
 package arbolInfijo;
 
-import estructurasExpresion.Queue;
+import conversionExpresion.conversorInfijoAPostfijo;
+import estructurasExpresion.Cola;
 
 public class prub {
-    public static void main(String[] args) {
-        convertInfxPostfx cnv = new convertInfxPostfx();
-        Queue myQ =cnv.convertirPQ("16+57*34*8+29");
+    public static void main(String[] args) throws Exception {
+        conversorInfijoAPostfijo cnv = new conversorInfijoAPostfijo();
+        Cola myQ =cnv.convertirPQ("8**3", "Algebraica");
 
         System.out.println("Tamaño del queue: "+myQ.getList().size());
         if (myQ.getList().size() == 0){

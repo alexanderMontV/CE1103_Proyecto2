@@ -11,7 +11,7 @@ public class Pila {
     }
 
     public void push(Object element) {
-        this.list.addFirst(element);}
+        this.list.addLast(element);}
 
     public Object pop(){
         return this.list.removeLast();

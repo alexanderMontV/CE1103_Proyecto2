@@ -1,23 +1,28 @@
 package estructurasExpresion;
 
+import archivosDespreciables.conversorRestore;
+import conversionExpresion.conversorInfijoAPostfijo;
+
 public class PruebaIN {
-    public static void main(String[] args) {
-        Evaluador myEvaluador = new Evaluador();
-        /*Arbol ax = new Arbol();
-        Nodo root= ax.construct(myEvaluador.Evaluar("((16+57)*(34*(8+29)))"));
-        ax.inorder(root);*/
+    public static void main(String[] args){
 
-        Queue myQ = myEvaluador.Evaluar("+");
-
-        System.out.println("Tamaño del queue: "+myQ.getList().size());
-        if (myQ.getList().size() == 0){
-            System.out.println("QUEUE VACIO");
-        }
-        else{
-            while(myQ.getFirst() != null){
-                System.out.println(myQ.dequeue());
+        try {
+            Cola myQ = new conversorRestore().convertirPQ("~8&3", "Logica");
+            System.out.println("Tamaño del queue: "+myQ.getList().size());
+            if (myQ.size() == 0){
+                System.out.println("No hay elementos en la cola");
+            }
+            else{
+                while(!myQ.empty()){
+                    System.out.println(myQ.dequeue());
+                }
             }
         }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+
 
 
     }

@@ -8,7 +8,7 @@ public class Arbol {
 
     }
     public boolean isOperator(String c) {
-        return Objects.equals(c, "+") || Objects.equals(c, "-") || Objects.equals(c, "*") || Objects.equals(c, "/") || Objects.equals(c, "^");
+        return Objects.equals(c, "+") || Objects.equals(c, "-") || Objects.equals(c, "*") || Objects.equals(c, "/") || Objects.equals(c, "#") ||Objects.equals(c, "|" ) ||Objects.equals(c, "&" ) ||Objects.equals(c, "^"  ) ||Objects.equals(c, "~" );
     }
     public Nodo construct(Cola postfix)
     {
@@ -18,36 +18,37 @@ public class Arbol {
         }
 
         // crea una stack vacía para almacenar punteros de árbol
-        Stack<Nodo> s = new Stack<>();
+        Pila s = new Pila();
 
         String c = "";
         // recorrer la expresión de sufijo
-        while (!postfix.getList().isEmpty())
-        {
+        while (!postfix.empty()) {
             // si el token actual es un operador
             c += postfix.dequeue();
-            if (isOperator(c))
-            {
+            if (isOperator(c)) {
                 // extrae dos nodos `x` e `y` de la stack
-                Nodo x = s.pop();
-                Nodo y = s.pop();
+                Nodo x = (Nodo) s.pop();
+                Nodo y = null;
+                if (!s.empty()) {
+                    y = (Nodo) s.pop();
+                }
 
                 // construye un nuevo árbol binario cuya raíz es el operador y cuyo
                 // los niños izquierdo y derecho apuntan a `y` y `x`, respectivamente
                 Nodo node = new Nodo(c, y, x);
 
                 // inserta el nodo actual en la stack
-                s.add(node);
+                s.push(node);
             }
             // si el token actual es un operando, crea un nuevo nodo de árbol binario
             // cuya raíz es el operando y lo empuja a la stack
             else {
-                s.add(new Nodo(c));
+                s.push(new Nodo(c));
             }
-            c="";
+            c = "";
         }
 
         // un puntero a la raíz del árbol de expresión permanece en la stack
-        return s.peek();
+        return (Nodo) s.peek();
     }
 }
